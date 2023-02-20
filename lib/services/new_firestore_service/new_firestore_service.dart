@@ -25,7 +25,13 @@ class PostServiceNew {
       FirebaseFirestore.instance.collection('users_test_model');
 
   // Creating Post
-
+  Future<void> creatingTweet(text) async {
+    await userRef.doc(userId).collection('posts').add({
+      'creator': userId,
+      'timestamp': FieldValue.serverTimestamp(),
+      'text': text,
+    });
+  }
   // Drafting Post
 
   // Delete Post
