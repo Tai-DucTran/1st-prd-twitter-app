@@ -32,7 +32,15 @@ class PostServiceNew {
       'text': text,
     });
   }
+
   // Drafting Post
+  Future<void> draftingTweet(text) async {
+    await userRef.doc(userId).collection('drafts').add({
+      'creator': userId,
+      'timestamp': FieldValue.serverTimestamp(),
+      'text': text,
+    });
+  }
 
   // Delete Post
 
